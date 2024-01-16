@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { getAllPosts } from '@/services/requests/posts';
+import { getAllPosts } from "@/services/requests/posts";
 
 export default {
   data() {

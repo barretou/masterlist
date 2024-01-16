@@ -1,4 +1,4 @@
-import { apiURL } from '@/api/baseURL';
+import { apiURL } from "@/api/baseURL";
 
 /**
  * Fetches all posts from the specified API endpoint.
@@ -15,7 +15,7 @@ export const getAllPosts = async () => {
 
     return response.json();
   } catch (error) {
-    throw new Error('Error fetching posts:', error);
+    throw new Error("Error fetching posts:", error);
   }
 };
 
@@ -29,16 +29,16 @@ export const getAllPosts = async () => {
 export const createPost = async ({ payload }) => {
   try {
     const response = await fetch(`${apiURL}/posts`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(payload),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
     });
 
     return response.status;
   } catch (error) {
-    throw new Error('Error creating post:', error);
+    throw new Error("Error creating post:", error);
   }
 };
 
@@ -53,17 +53,17 @@ export const createPost = async ({ payload }) => {
 export const updatePost = async ({ payload }, postId) => {
   try {
     const response = await fetch(`${apiURL}/posts/${postId}`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(payload),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
     });
 
     const json = await response.json();
     return json;
   } catch (error) {
-    throw new Error('Error updating post:', error);
+    throw new Error("Error updating post:", error);
   }
 };
 
@@ -81,7 +81,7 @@ export const updatePost = async ({ payload }, postId) => {
 export const deletePost = async (postId) => {
   try {
     const response = await fetch(`${apiURL}/posts/${postId}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
 
     if (!response.ok) {
@@ -91,6 +91,6 @@ export const deletePost = async (postId) => {
     const deletedData = await response.json();
     return { success: true, data: deletedData };
   } catch (error) {
-    throw new Error('Error deleting post:', error);
+    throw new Error("Error deleting post:", error);
   }
 };

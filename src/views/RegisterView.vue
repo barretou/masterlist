@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { createPost } from '@/services/requests/posts';
+import { createPost } from "@/services/requests/posts";
 
 export default {
     data: () => ({
@@ -48,24 +48,24 @@ export default {
                 title: this.Title,
                 body: this.Body,
                 userId: this.UserId,
-            }
+            };
 
-            const statusResponse = await createPost(post)
-            this.HandleSnackbar(statusResponse)
+            const statusResponse = await createPost(post);
+            this.HandleSnackbar(statusResponse);
         },
         HandleSnackbar(status){
             if(status === 201) {
-                this.SnackbarText = "Item created successfully"
-                this.SnackbarColor = "success"
+                this.SnackbarText = "Item created successfully";
+                this.SnackbarColor = "success";
                 this.SnackbarShow = true;
-                return
+                return;
             }
-            this.SnackbarText = "Something wrong, retry later!"
-            this.SnackbarColor = "red-darken-2"
+            this.SnackbarText = "Something wrong, retry later!";
+            this.SnackbarColor = "red-darken-2";
             this.SnackbarShow = true;
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped></style>
