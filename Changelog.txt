@@ -1,0 +1,5 @@
+2024-01-15 Gustavo de Souza Barreto <gustavo.barreto@aqtech.com.br>
+
+	* Versão 0.0.1
+
+	* WEB-4324 - Configuraração geral do front-end para desenvolvimento.
