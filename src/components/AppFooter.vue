@@ -9,10 +9,9 @@
       </v-container>
     </v-footer>
   </template>
-  
-  <script>
-  export default {
-    // You can add component-specific logic here
-  };
-  </script>
-  
+
+<script>
+export default {
+  // You can add component-specific logic here
+};
+</script>

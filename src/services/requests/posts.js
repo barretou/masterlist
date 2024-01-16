@@ -1,5 +1,4 @@
-import { baseURL } from '@/api/baseURL'
-
+import { apiURL } from '@/api/baseURL';
 
 /**
  * Fetches all posts from the specified API endpoint.
@@ -9,7 +8,7 @@ import { baseURL } from '@/api/baseURL'
  */
 export const getAllPosts = async () => {
   try {
-    const response = await fetch(`${baseURL}/posts`);
+    const response = await fetch(`${apiURL}/posts`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -29,7 +28,7 @@ export const getAllPosts = async () => {
  */
 export const createPost = async ({ payload }) => {
   try {
-    const response = await fetch(`${baseURL}/posts`, {
+    const response = await fetch(`${apiURL}/posts`, {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
@@ -38,7 +37,6 @@ export const createPost = async ({ payload }) => {
     });
 
     return response.status;
-    
   } catch (error) {
     throw new Error('Error creating post:', error);
   }
@@ -54,7 +52,7 @@ export const createPost = async ({ payload }) => {
  */
 export const updatePost = async ({ payload }, postId) => {
   try {
-    const response = await fetch(`${baseURL}/posts/${postId}`, {
+    const response = await fetch(`${apiURL}/posts/${postId}`, {
       method: 'PUT',
       body: JSON.stringify(payload),
       headers: {
@@ -73,12 +71,16 @@ export const updatePost = async ({ payload }, postId) => {
  * Deletes a post with the specified postId.
  *
  * @param {number} postId - The ID of the post to be deleted.
- * @returns {Promise<Object>} A promise that resolves to an object indicating the success of the deletion and the deleted data.
- * @throws {Error} If there is an error during the fetch, if the HTTP status is not okay, or if the deletion is not successful.
+ *
+ * @returns {Promise<Object>} A promise that resolves to an
+ *  object indicating the success of the deletion and the deleted data.
+ *
+ * @throws {Error} If there is an error during the fetch,
+ * if the HTTP status is not okay, or if the deletion is not successful.
  */
 export const deletePost = async (postId) => {
   try {
-    const response = await fetch(`${baseURL}/posts/${postId}`, {
+    const response = await fetch(`${apiURL}/posts/${postId}`, {
       method: 'DELETE',
     });
 
@@ -92,7 +94,3 @@ export const deletePost = async (postId) => {
     throw new Error('Error deleting post:', error);
   }
 };
-
-
-
-
