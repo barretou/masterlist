@@ -27,6 +27,7 @@
 
 <script>
 import { createPost } from "@/services/requests/posts";
+import SnackbarService  from "@/services/handlers/handleSnackbar";
 
 export default {
     data: () => ({
@@ -37,8 +38,8 @@ export default {
         SnackbarText: "",
         SnackbarColor: "",
     }),
-    computed:{
-        enableCreateButton(){
+    computed: {
+        enableCreateButton() {
             return !(this.Body && this.Title && this.UserId);
         }
     },
@@ -53,17 +54,13 @@ export default {
             const statusResponse = await createPost(post);
             this.HandleSnackbar(statusResponse);
         },
-        HandleSnackbar(status){
-            if(status === 201) {
-                this.SnackbarText = "Item created successfully";
-                this.SnackbarColor = "success";
-                this.SnackbarShow = true;
-                return;
-            }
-            this.SnackbarText = "Something wrong, retry later!";
-            this.SnackbarColor = "red-darken-2";
-            this.SnackbarShow = true;
-        }
+        HandleSnackbar(status) {
+            const snackbar = SnackbarService.handleSnackbar(status);
+
+            this.SnackbarText = snackbar.text;
+            this.SnackbarColor = snackbar.color;
+            this.SnackbarShow = snackbar.show;
+        },
     }
 };
 </script>
