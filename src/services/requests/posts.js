@@ -1,4 +1,4 @@
-import { apiURL } from "@/api/baseURL";
+import { baseURL } from "@/api/baseURL";
 
 /**
  * Fetches all posts from the specified API endpoint.
@@ -8,7 +8,7 @@ import { apiURL } from "@/api/baseURL";
  */
 export const getAllPosts = async () => {
   try {
-    const response = await fetch(`${apiURL}/posts`);
+    const response = await fetch(`${baseURL}/posts`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -28,7 +28,7 @@ export const getAllPosts = async () => {
  */
 export const createPost = async ({ payload }) => {
   try {
-    const response = await fetch(`${apiURL}/posts`, {
+    const response = await fetch(`${baseURL}/posts`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -52,7 +52,7 @@ export const createPost = async ({ payload }) => {
  */
 export const updatePost = async ({ payload }, postId) => {
   try {
-    const response = await fetch(`${apiURL}/posts/${postId}`, {
+    const response = await fetch(`${baseURL}/posts/${postId}`, {
       method: "PUT",
       body: JSON.stringify(payload),
       headers: {
@@ -80,7 +80,7 @@ export const updatePost = async ({ payload }, postId) => {
  */
 export const deletePost = async (postId) => {
   try {
-    const response = await fetch(`${apiURL}/posts/${postId}`, {
+    const response = await fetch(`${baseURL}/posts/${postId}`, {
       method: "DELETE",
     });
 
