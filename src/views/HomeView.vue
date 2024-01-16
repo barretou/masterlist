@@ -16,16 +16,24 @@
 </template>
 
 <script>
-import { getAllPosts } from "@/services/requests/posts";
+import RequestPostService from "@/services/requests/posts";
 
 export default {
   data() {
     return {
       AllPosts: [],
+      ServiceInstace: null
     };
   },
   async mounted() {
-    this.AllPosts = await getAllPosts();
+    /**
+     * Represents an instance of the RequestPostService class for handling HTTP requests related to posts.
+     * @type {RequestPostService}
+     * @name ServiceInstance
+     * @instance
+     */
+    this.ServiceInstace = new RequestPostService();
+    this.AllPosts = await this.ServiceInstace.getAllPosts();
   },
 };
 </script>
